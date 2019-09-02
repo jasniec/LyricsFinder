@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="LyricsFinder.Main.MVVM.Titlebar.TitlebarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:LyricsFinder.Main.Controls"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="800"
+             Name="root">
+    <StackPanel>
+        <controls:TitleControl ShowOptions="{Binding ElementName=root, Path=DataContext.ShowOptions}" Title="{Binding ElementName=root, Path=DataContext.Title}" Background="{Binding Path=DataContext.Background, ElementName=root}" Height="40" />
+    </StackPanel>
+</UserControl>
