@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LyricsFinder.Main.Controls"
+             xmlns:core="clr-namespace:LyricsFinder.Core;assembly=LyricsFinder.Core"
              xmlns:converters="clr-namespace:LyricsFinder.Main.Converters"
              mc:Ignorable="d" 
              Name="TitleControl1"
@@ -90,9 +91,9 @@
             
         </Grid.ColumnDefinitions>
         
-        <TextBlock Text="{Binding Title, ElementName=TitleControl1}" Foreground="#ccc" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" Margin="10,0" FontSize="25" />
+        <TextBlock Text="{Binding Title, ElementName=TitleControl1}" Foreground="{x:Static core:ColorPalette.FontBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" Margin="10,0" FontSize="25" />
 
-        <TextBox Grid.Column="1" Margin="0, 5" Padding="10,0,0,0" VerticalContentAlignment="Center" BorderThickness="0" x:Name="SearchTermTextBox">
+        <TextBox Grid.Column="1" Margin="0, 5" Padding="10,0,0,0" VerticalContentAlignment="Center" BorderThickness="0" x:Name="SearchTermTextBox" Background="{x:Static core:ColorPalette.DarkBrush}" Foreground="{x:Static core:ColorPalette.FontBrush}">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5" />
@@ -119,6 +120,9 @@
             <Button Width="{Binding Height, ElementName=TitleControl1}" Template="{DynamicResource SimpleButtonRegularControlTemplate}" Click="MinimizeClick">
                 <Path SnapsToDevicePixels="True" Stretch="Uniform" VerticalAlignment="Bottom" Margin="9,7,9,8" Data="F1 M 0,0 h8 v1.25 h-8 Z " Style="{StaticResource SimpleButtonRegularPathStyle}" />
             </Button>
+            <!--<Button Width="{Binding Height, ElementName=TitleControl1}" Template="{DynamicResource SimpleButtonRegularControlTemplate}" Click="MaximalizeClick">
+                <Path SnapsToDevicePixels="True" Stretch="Uniform" VerticalAlignment="Bottom" Margin="9,7,9,8" Data="M16 4 L16 0 L0 0 L0 16 L16 16 L16 4 L12 4 L12 12 L4 12 L4 4" Style="{StaticResource SimpleButtonRegularPathStyle}" />
+            </Button>-->
             <Button Width="{Binding Height, ElementName=TitleControl1}" Template="{DynamicResource SimpleButtonRedControlTemplate}" Click="CloseClick">
                 <Path Margin="7" SnapsToDevicePixels="True" Stretch="Uniform" Data="F1 M 26.9166,22.1667L 37.9999,33.25L 49.0832,22.1668L 53.8332,26.9168L 42.7499,38L 53.8332,49.0834L 49.0833,53.8334L 37.9999,42.75L 26.9166,53.8334L 22.1666,49.0833L 33.25,38L 22.1667,26.9167L 26.9166,22.1667 Z " Style="{StaticResource SimpleButtonRedPathStyle}"/>
             </Button>

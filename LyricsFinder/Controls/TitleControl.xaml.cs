@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using SystemInformation = System.Windows.Forms.SystemInformation;
 using System.Windows.Input;
 using System.Windows.Media;
+using LyricsFinder.Core;
 
 namespace LyricsFinder.Main.Controls
 {
@@ -22,9 +23,6 @@ namespace LyricsFinder.Main.Controls
 
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title",
             typeof(string), typeof(TitleControl), new PropertyMetadata("title"));
-
-        //public static new readonly DependencyProperty BackgroundProperty = DependencyProperty.Register("Background",
-        //    typeof(Brush), typeof(TitleControl), new PropertyMetadata(new SolidColorBrush(Colors.Transparent)));
 
         public bool ShowOptions
         {
@@ -52,22 +50,10 @@ namespace LyricsFinder.Main.Controls
             }
         }
 
-        //public new Brush Background {
-        //    get { return (Brush)base.GetValue(BackgroundProperty); }
-        //    set
-        //    {
-        //        if (Background != value)
-        //        {
-        //            base.SetValue(BackgroundProperty, value);
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
-
         #region Button Brushes
 
         public static readonly DependencyProperty RegularButtonHoverBackgroundProperty = DependencyProperty.Register(
-            "RegularButtonHoverBackground", typeof(Brush), typeof(TitleControl), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(238, 238, 238))));
+            "RegularButtonHoverBackground", typeof(Brush), typeof(TitleControl), new PropertyMetadata(new SolidColorBrush(Color.FromArgb(128, 255, 255, 255))));
 
         public Brush RegularButtonHoverBackground
         {
@@ -85,7 +71,7 @@ namespace LyricsFinder.Main.Controls
         }
 
         public static readonly DependencyProperty RegularButtonClickBackgroundProperty = DependencyProperty.Register(
-            "RegularButtonClickBackground", typeof(Brush), typeof(TitleControl), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(78, 166, 234))));
+            "RegularButtonClickBackground", typeof(Brush), typeof(TitleControl), new PropertyMetadata(ColorPalette.DarkBrush));
 
         public Brush RegularButtonClickBackground
         {
@@ -103,7 +89,7 @@ namespace LyricsFinder.Main.Controls
         }
 
         public static readonly DependencyProperty DefaultButtonForegroundProperty = DependencyProperty.Register(
-            "DefaultButtonForeground", typeof(Brush), typeof(TitleControl), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(204, 204, 204))));
+            "DefaultButtonForeground", typeof(Brush), typeof(TitleControl), new PropertyMetadata(ColorPalette.FontBrush));
 
         public Brush DefaultButtonForeground
         {
@@ -130,7 +116,7 @@ namespace LyricsFinder.Main.Controls
         }
 
         public static readonly DependencyProperty RegularButtonClickForegroundProperty = DependencyProperty.Register(
-            "RegularButtonClickForeground", typeof(Brush), typeof(TitleControl), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(255, 255, 255))));
+            "RegularButtonClickForeground", typeof(Brush), typeof(TitleControl), new PropertyMetadata(ColorPalette.FontBrush));
 
         public Brush RegularButtonClickForeground
         {

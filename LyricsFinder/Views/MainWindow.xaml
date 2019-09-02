@@ -13,11 +13,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <ContentControl prism:RegionManager.RegionName="TitlebarView" Grid.Row="0" VerticalAlignment="Top" />
-        <ContentControl prism:RegionManager.RegionName="ContentView" Grid.Row="1" VerticalAlignment="Top" />
+        <ContentControl prism:RegionManager.RegionName="ContentView" Grid.Row="1" />
     </Grid>
 </Window>

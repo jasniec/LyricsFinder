@@ -7,9 +7,10 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
+             xmlns:core="clr-namespace:LyricsFinder.Core;assembly=LyricsFinder.Core"
              d:DesignHeight="50" d:DesignWidth="800"
              Name="root">
     <StackPanel>
-        <controls:TitleControl ShowOptions="{Binding ElementName=root, Path=DataContext.ShowOptions}" Title="{Binding ElementName=root, Path=DataContext.Title}" Background="{Binding Path=DataContext.Background, ElementName=root}" Height="40" />
+        <controls:TitleControl ShowOptions="{Binding ElementName=root, Path=DataContext.ShowOptions}" Title="{Binding ElementName=root, Path=DataContext.Title}" Background="{x:Static core:ColorPalette.TitleBrush}" Height="40" />
     </StackPanel>
 </UserControl>
