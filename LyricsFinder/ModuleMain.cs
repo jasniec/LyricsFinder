@@ -1,5 +1,4 @@
-﻿using LyricsFinder.Main.MVVM.Content;
-using LyricsFinder.Main.MVVM.Titlebar;
+﻿using LyricsFinder.Main.MVVM.Titlebar;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
@@ -24,13 +23,11 @@ namespace LyricsFinder.Main
         public void OnInitialized(IContainerProvider containerProvider)
         {
             _regionManager.RegisterViewWithRegion(nameof(TitlebarView), typeof(TitlebarView));
-            _regionManager.RegisterViewWithRegion(nameof(ContentView), typeof(ContentView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             ViewModelLocationProvider.Register<TitlebarView, TitlebarViewModel>();
-            ViewModelLocationProvider.Register<ContentView, ContentViewModel>();
         }
     }
 }

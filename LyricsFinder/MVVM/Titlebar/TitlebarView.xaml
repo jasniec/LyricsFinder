@@ -11,6 +11,10 @@
              d:DesignHeight="50" d:DesignWidth="800"
              Name="root">
     <StackPanel>
-        <controls:TitleControl ShowOptions="{Binding ElementName=root, Path=DataContext.ShowOptions}" Title="{Binding ElementName=root, Path=DataContext.Title}" Background="{x:Static core:ColorPalette.TitleBrush}" Height="40" />
+        <controls:TitleControl ShowOptions="{Binding ElementName=root, Path=DataContext.ShowOptions}" 
+                               Title="{Binding ElementName=root, Path=DataContext.Title}" 
+                               Background="{x:Static core:ColorPalette.TitleBrush}"
+                               ShowOptionsRequested="{Binding ElementName=root, Path=DataContext.OptionsClick}"
+                               Height="40" />
     </StackPanel>
 </UserControl>

@@ -14,15 +14,14 @@ namespace LyricsFinder.Main.Controls
     /// </summary>
     public partial class TitleControl : UserControl
     {
-        public delegate void ShowOptionsRequestedEventHandler();
-
-        public event ShowOptionsRequestedEventHandler ShowOptionsRequested;
-
         public static readonly DependencyProperty ShowOptionsProperty = DependencyProperty.Register("ShowOptions",
             typeof(bool), typeof(TitleControl), new PropertyMetadata(false));
 
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title",
             typeof(string), typeof(TitleControl), new PropertyMetadata("title"));
+
+        public static readonly DependencyProperty ShowOptionsRequestedProperty = DependencyProperty.Register("ShowOptionsRequested",
+            typeof(ICommand), typeof(TitleControl), new PropertyMetadata(null));
 
         public bool ShowOptions
         {
@@ -36,7 +35,6 @@ namespace LyricsFinder.Main.Controls
                 }
             }
         }
-
         public string Title
         {
             get { return (string)base.GetValue(TitleProperty); }
@@ -49,6 +47,18 @@ namespace LyricsFinder.Main.Controls
                 }
             }
         }
+        public ICommand ShowOptionsRequested {
+            get { return (ICommand)base.GetValue(ShowOptionsRequestedProperty); }
+            set
+            {
+                if (ShowOptionsRequested != value)
+                {
+                    base.SetValue(ShowOptionsRequestedProperty, value);
+                    OnPropertyChanged();
+                }
+            }
+        }
+
 
         #region Button Brushes
 
@@ -137,7 +147,7 @@ namespace LyricsFinder.Main.Controls
 
         protected virtual void OnShowOptionsRequested()
         {
-            ShowOptionsRequested?.Invoke();
+            ShowOptionsRequested?.Execute(null);
         }
 
         public TitleControl()

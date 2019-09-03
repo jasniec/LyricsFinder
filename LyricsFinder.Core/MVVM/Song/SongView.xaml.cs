@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LyricsFinder.Main.MVVM.Content
+namespace LyricsFinder.Core.MVVM.Song
 {
     /// <summary>
-    /// Interaction logic for ContentView.xaml
+    /// Interaction logic for SongView.xaml
     /// </summary>
-    public partial class ContentView : UserControl
+    public partial class SongView : UserControl
     {
-        public ContentView()
+        public SongView()
         {
             InitializeComponent();
         }

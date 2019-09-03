@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="LyricsFinder.Core.MVVM.Settings.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LyricsFinder.Core.MVVM.Settings"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:core="clr-namespace:LyricsFinder.Core"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             Background="{x:Static core:ColorPalette.MainBrush }"
+             x:Name="root"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style x:Key="SimpleButtonStyleBase" TargetType="Grid">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
+        </Style>
+        <Style x:Key="SimpleButtonRegularStyle" TargetType="Grid" BasedOn="{StaticResource SimpleButtonStyleBase}">
+            <Setter Property="Background" Value="Transparent" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button, Mode=FindAncestor}, Path=IsMouseOver}" Value="True">
+                    <Setter Property="Background" Value="#80FFFFFF" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button, Mode=FindAncestor}, Path=IsPressed}" Value="True">
+                    <Setter Property="Background" Value="{x:Static core:ColorPalette.DarkBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Thickness x:Key="SimpleButtonContentPresenterMargin">6</Thickness>
+
+        <ControlTemplate x:Key="SimpleButtonRegularControlTemplate" TargetType="{x:Type Button}">
+            <Grid Style="{StaticResource SimpleButtonRegularStyle}">
+                <ContentPresenter Margin="{StaticResource SimpleButtonContentPresenterMargin}" />
+            </Grid>
+        </ControlTemplate>
+
+        <Style x:Key="SimpleButtonPathStyleBase" TargetType="Path">
+            <Setter Property="Fill" Value="{x:Static core:ColorPalette.FontBrush}" />
+            <Setter Property="Margin" Value="0,0,0,1" />
+        </Style>
+
+        <Style x:Key="SimpleButtonRegularPathStyle" TargetType="Path" BasedOn="{StaticResource SimpleButtonPathStyleBase}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button, Mode=FindAncestor}, Path=IsMouseOver}" Value="True">
+                    <Setter Property="Fill" Value="Black" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button, Mode=FindAncestor}, Path=IsPressed}" Value="True">
+                    <Setter Property="Fill" Value="{x:Static core:ColorPalette.FontBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button HorizontalAlignment="Left" Width="40" Height="40" Template="{DynamicResource SimpleButtonRegularControlTemplate}" Command="{Binding Close}">
+            <Path Margin="5" SnapsToDevicePixels="True" Stretch="Uniform" Data="M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z" Style="{StaticResource SimpleButtonRegularPathStyle}"/>
+        </Button>
+    </Grid>
+</UserControl>

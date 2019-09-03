@@ -92,10 +92,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Content\ContentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MVVM\Titlebar\TitlebarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,10 +105,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converters\ValueMultiplierConverter.cs" />
-    <Compile Include="MVVM\Content\ContentView.xaml.cs">
-      <DependentUpon>ContentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Content\ContentViewModel.cs" />
     <Compile Include="MVVM\Titlebar\TitlebarView.xaml.cs">
       <DependentUpon>TitlebarView.xaml</DependentUpon>
     </Compile>
@@ -156,5 +148,6 @@
       <Name>LyricsFinder.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
