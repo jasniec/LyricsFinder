@@ -16,5 +16,9 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Text="{Binding ProgressPercentage}" />
+
+        <RichTextBox Grid.Column="1" Background="{x:Static core:ColorPalette.DarkBrush}" Foreground="{x:Static core:ColorPalette.FontBrush}" IsReadOnly="True" BorderThickness="0" BorderBrush="Transparent" />
     </Grid>
 </UserControl>

@@ -101,5 +101,15 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LyricsFinder.PlayerIntegrityManager\LyricsFinder.PlayerIntegrityManager.csproj">
+      <Project>{69f77ffa-2046-4d16-af8b-5f3be22b29c7}</Project>
+      <Name>LyricsFinder.PlayerIntegrityManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LyricsFinder.SpotifyIntegrity\LyricsFinder.SpotifyIntegrity.csproj">
+      <Project>{63A74BEE-EDA9-49F0-AE4C-A8B362D1582C}</Project>
+      <Name>LyricsFinder.SpotifyIntegrity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,7 @@
 ﻿using LyricsFinder.Core.MVVM.Settings;
 using LyricsFinder.Core.MVVM.Song;
+using LyricsFinder.PlayerIntegrityManager;
+using LyricsFinder.SpotifyIntegrity;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
@@ -29,6 +31,8 @@ namespace LyricsFinder.Core
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterSingleton<IPlayerBroker, SpotifyBroker>();
+
             ViewModelLocationProvider.Register<SongView, SongViewModel>();
             ViewModelLocationProvider.Register<SettingsView, SettingsViewModel>();
         }

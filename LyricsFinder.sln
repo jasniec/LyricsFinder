@@ -6,6 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyricsFinder.Main", "LyricsFinder\LyricsFinder.Main.csproj", "{109AA760-09D6-4E8C-B92F-713E156EDE02}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyricsFinder.Core", "LyricsFinder.Core\LyricsFinder.Core.csproj", "{DB43C0C8-703F-440C-83D4-C81B118F18DB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{63A74BEE-EDA9-49F0-AE4C-A8B362D1582C} = {63A74BEE-EDA9-49F0-AE4C-A8B362D1582C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyricsFinder.SpotifyIntegrity", "LyricsFinder.SpotifyIntegrity\LyricsFinder.SpotifyIntegrity.csproj", "{63A74BEE-EDA9-49F0-AE4C-A8B362D1582C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyricsFinder.PlayerIntegrityManager", "LyricsFinder.PlayerIntegrityManager\LyricsFinder.PlayerIntegrityManager.csproj", "{69F77FFA-2046-4D16-AF8B-5F3BE22B29C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +28,14 @@ Global
 		{DB43C0C8-703F-440C-83D4-C81B118F18DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB43C0C8-703F-440C-83D4-C81B118F18DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB43C0C8-703F-440C-83D4-C81B118F18DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63A74BEE-EDA9-49F0-AE4C-A8B362D1582C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A74BEE-EDA9-49F0-AE4C-A8B362D1582C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A74BEE-EDA9-49F0-AE4C-A8B362D1582C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A74BEE-EDA9-49F0-AE4C-A8B362D1582C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F77FFA-2046-4D16-AF8B-5F3BE22B29C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F77FFA-2046-4D16-AF8B-5F3BE22B29C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F77FFA-2046-4D16-AF8B-5F3BE22B29C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F77FFA-2046-4D16-AF8B-5F3BE22B29C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
