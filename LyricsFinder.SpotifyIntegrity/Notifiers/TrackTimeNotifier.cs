@@ -26,7 +26,7 @@ namespace LyricsFinder.SpotifyIntegrity.Notifiers
             if (playback?.HasError() == false && playback.Item?.HasError() == false &&
                 playback.ProgressMs != currentTime)
             {
-                TrackTimeChanged?.Invoke(new TrackTimeInfo(playback.ProgressMs, playback.Item.DurationMs));
+                TrackTimeChanged?.Invoke(new TrackTimeInfo((uint)playback.ProgressMs, (uint)playback.Item.DurationMs));
                 currentTime = playback.ProgressMs;
             }
         }

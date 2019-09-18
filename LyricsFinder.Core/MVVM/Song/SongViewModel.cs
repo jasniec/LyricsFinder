@@ -20,16 +20,39 @@ namespace LyricsFinder.Core.MVVM.Song
             _playerBroker.Connect();
         }
 
-        string songName = "";
+        public string SongName { get => _songName; private set { SetProperty(ref _songName, value); /*_songName = value; RaisePropertyChanged(); */} }
+        public string AlbumName { get => _albumName; private set => SetProperty(ref _albumName, value); }
+        public string ArtistName { get => _artistName; private set => SetProperty(ref _artistName, value); }
+        public uint ProgressMax { get => _progressMax; private set => SetProperty(ref _progressMax, value); }
+        public uint ProgressActual { get => _progressActual; private set => SetProperty(ref _progressActual, value); }
+        public string ProgressText { get => _progressText; private set => SetProperty(ref _progressText, value); }
+
+        string _songName;
+        string _albumName;
+        string _artistName;
+        string _progressText;
+        uint _progressMax;
+        uint _progressActual;
 
         private void _playerBroker_TrackChanged(TrackInfo track)
         {
-            songName = track.Name;
+            SongName = track.Name;
         }
 
-        private void _playerBroker_TrackTimeChanged(PlayerIntegrityManager.Models.TrackTimeInfo obj)
+        private void _playerBroker_TrackTimeChanged(TrackTimeInfo trackInfo)
         {
-            ProgressPercentage = $"{songName} - {obj.Actual} / {obj.Duration}";
+            ProgressMax = trackInfo.Duration;
+            ProgressActual = trackInfo.Actual;
+
+            TimeSpan actualTs = new TimeSpan((long)ProgressActual);
+            TimeSpan maxTs = new TimeSpan((long)ProgressMax);
+
+            string textPt1 = actualTs.TotalHours > 0 ? $"{actualTs.TotalHours}:{actualTs.Minutes}:{actualTs.Seconds}" :
+                                                       $"{actualTs.Minutes}:{actualTs.Seconds}";
+            string textPt2 = maxTs.TotalHours > 0 ? $"{maxTs.TotalHours}:{maxTs.Minutes}:{maxTs.Seconds}" :
+                                                    $"{maxTs.Minutes}:{maxTs.Seconds}";
+
+            ProgressText = $"{textPt1} / {textPt2}";
         }
 
         readonly IPlayerBroker _playerBroker;

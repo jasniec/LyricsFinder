@@ -8,13 +8,13 @@ namespace LyricsFinder.PlayerIntegrityManager.Models
 {
     public class TrackTimeInfo
     {
-        public TrackTimeInfo(int actual, int duration)
+        public TrackTimeInfo(uint actual, uint duration)
         {
             Actual = actual;
             Duration = duration;
         }
 
-        public int Actual { get; private set; }
-        public int Duration { get; private set; }
+        public uint Actual { get; private set; }
+        public uint Duration { get; private set; }
     }
 }

@@ -74,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorPalette.cs" />
+    <Compile Include="Controls\MarqueeTextBlock.xaml.cs">
+      <DependentUpon>MarqueeTextBlock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModuleCore.cs" />
     <Compile Include="MVVM\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
@@ -92,6 +95,10 @@
     <Folder Include="MVVM\Search\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\MarqueeTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MVVM\Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

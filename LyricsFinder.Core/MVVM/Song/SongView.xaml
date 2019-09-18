@@ -6,10 +6,11 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:local="clr-namespace:LyricsFinder.Core.MVVM.Song"
              xmlns:core="clr-namespace:LyricsFinder.Core"
+             xmlns:controls="clr-namespace:LyricsFinder.Core.Controls"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              Background="{x:Static core:ColorPalette.MainBrush }"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Name="songView">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -17,8 +18,13 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Text="{Binding ProgressPercentage}" />
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <controls:MarqueeTextBlock Text="{Binding DataContext.SongName, ElementName=songView, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+                                       Foreground="{x:Static core:ColorPalette.FontBrush}"
+                                       Background="Transparent"/>
+        </StackPanel>
 
+            
         <RichTextBox Grid.Column="1" Background="{x:Static core:ColorPalette.DarkBrush}" Foreground="{x:Static core:ColorPalette.FontBrush}" IsReadOnly="True" BorderThickness="0" BorderBrush="Transparent" />
     </Grid>
 </UserControl>
