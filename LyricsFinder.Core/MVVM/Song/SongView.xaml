@@ -19,9 +19,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Orientation="Vertical">
-            <controls:MarqueeTextBlock Text="{Binding DataContext.SongName, ElementName=songView, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
-                                       Foreground="{x:Static core:ColorPalette.FontBrush}"
-                                       Background="Transparent"/>
+            <controls:MarqueeTextBlock Text="{Binding DataContext.SongName, ElementName=songView, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
             

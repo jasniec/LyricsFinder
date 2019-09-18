@@ -24,9 +24,11 @@ namespace LyricsFinder.SpotifyIntegrity.Notifiers
         public void Refresh(PlaybackContext playback)
         {
             if (playback?.HasError() == false && playback.Item?.HasError() == false &&
-                playback.Item.Name != currentTrackId)
+                playback.Item.Id != currentTrackId)
             {
-                var trackInfo = TrackInfoFactory.Create(playback.Item);   
+                var trackInfo = TrackInfoFactory.Create(playback.Item);
+
+                currentTrackId = playback.Item.Id;
 
                 TrackChanged?.Invoke(trackInfo);
             }
