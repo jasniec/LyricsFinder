@@ -21,6 +21,9 @@ namespace LyricsFinder.Core.Controls
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text",
             typeof(string), typeof(MarqueeTextBlock), new FrameworkPropertyMetadata(string.Empty, (d, e) => { ((MarqueeTextBlock)d).Text = (string)e.NewValue; }));
 
+        public static new readonly DependencyProperty FontSizeProperty = DependencyProperty.Register("FontSize",
+            typeof(int), typeof(MarqueeTextBlock), new PropertyMetadata(20));
+
         public string Text
         {
             get => _text;
@@ -31,10 +34,12 @@ namespace LyricsFinder.Core.Controls
                     _text = value;
                     textBlock.Text = _text;
                     textBlockSecond.Text = _text;
-                    SetWidth();
+                    SetSize();
                 }
             }
         }
+        public new int FontSize { get; set; }
+        public new double Height { get; set; }
 
         string _text;
         bool animationInProgress;
@@ -45,7 +50,7 @@ namespace LyricsFinder.Core.Controls
         {
             base.OnMouseEnter(e);
 
-            if (textBlock.RenderSize.Width > canMain.RenderSize.Width && !animationInProgress)
+            if (textBlock.RenderSize.Width - 20 > canMain.RenderSize.Width && !animationInProgress)
             {
                 animationInProgress = true;
                 textBlock.BeginAnimation(Canvas.LeftProperty, doubleAnimation);
@@ -57,7 +62,7 @@ namespace LyricsFinder.Core.Controls
         {
             base.OnRenderSizeChanged(sizeInfo);
 
-            if (textBlock.RenderSize.Width <= canMain.RenderSize.Width)
+            if (textBlock.RenderSize.Width - 20 <= canMain.RenderSize.Width)
             {
                 animationInProgress = false;
                 textBlock.BeginAnimation(Canvas.LeftProperty, null);
@@ -69,7 +74,7 @@ namespace LyricsFinder.Core.Controls
         {
             animationInProgress = false;
 
-            if (IsMouseOver && textBlock.RenderSize.Width > canMain.RenderSize.Width)
+            if (IsMouseOver && textBlock.RenderSize.Width - 20 > canMain.RenderSize.Width)
             {
                 animationInProgress = true;
                 textBlock.BeginAnimation(Canvas.LeftProperty, doubleAnimation);
@@ -82,7 +87,7 @@ namespace LyricsFinder.Core.Controls
             }
         }
 
-        private void SetWidth()
+        private void SetSize()
         {
             textBlock.Dispatcher.Invoke(() => { }, DispatcherPriority.Render);
 
@@ -103,6 +108,8 @@ namespace LyricsFinder.Core.Controls
             Canvas.SetLeft(textBlockSecond, textBlockSecond.RenderSize.Width);
 
             canHolder.Width = textBlock.RenderSize.Width;
+            canHolder.Height = textBlock.RenderSize.Height;
+            grid.Height = textBlock.RenderSize.Height;
         }
 
     }

@@ -37,6 +37,8 @@ namespace LyricsFinder.Core.MVVM.Song
         private void _playerBroker_TrackChanged(TrackInfo track)
         {
             SongName = track.Name;
+            AlbumName = track.Album.Name;
+            ArtistName = string.Join(", ", track.Artists.Select(a => a.Name));
         }
 
         private void _playerBroker_TrackTimeChanged(TrackTimeInfo trackInfo)
@@ -44,8 +46,8 @@ namespace LyricsFinder.Core.MVVM.Song
             ProgressMax = trackInfo.Duration;
             ProgressActual = trackInfo.Actual;
 
-            TimeSpan actualTs = new TimeSpan((long)ProgressActual);
-            TimeSpan maxTs = new TimeSpan((long)ProgressMax);
+            TimeSpan actualTs = new TimeSpan(ProgressActual);
+            TimeSpan maxTs = new TimeSpan(ProgressMax);
 
             string textPt1 = actualTs.TotalHours > 0 ? $"{actualTs.TotalHours}:{actualTs.Minutes}:{actualTs.Seconds}" :
                                                        $"{actualTs.Minutes}:{actualTs.Seconds}";

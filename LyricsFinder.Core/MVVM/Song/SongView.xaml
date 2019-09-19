@@ -19,10 +19,15 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Orientation="Vertical">
-            <controls:MarqueeTextBlock Text="{Binding DataContext.SongName, ElementName=songView, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <controls:MarqueeTextBlock Text="{Binding DataContext.SongName, ElementName=songView, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" FontSize="25" />
+            <controls:MarqueeTextBlock Text="{Binding DataContext.AlbumName, ElementName=songView, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" FontSize="15" />
         </StackPanel>
 
             
         <RichTextBox Grid.Column="1" Background="{x:Static core:ColorPalette.DarkBrush}" Foreground="{x:Static core:ColorPalette.FontBrush}" IsReadOnly="True" BorderThickness="0" BorderBrush="Transparent" />
+
+        <StackPanel Grid.Column="2" Orientation="Vertical">
+            <controls:MarqueeTextBlock Text="{Binding DataContext.ArtistName, ElementName=songView, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" FontSize="25" />
+        </StackPanel>
     </Grid>
 </UserControl>
