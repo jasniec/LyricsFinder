@@ -7,7 +7,10 @@ using SpotifyAPI.Web.Enums;
 using SpotifyAPI.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -19,15 +22,7 @@ namespace LyricsFinder.SpotifyIntegrity
         public SpotifyBroker()
         {
             notifiers = new List<INotifier>();
-
-            TrackTimeNotifier ttn = new TrackTimeNotifier(_api);
-            ttn.TrackTimeChanged += t => TrackTimeChanged?.Invoke(t);
-
-            SongChangedNotifier scn = new SongChangedNotifier(_api);
-            scn.TrackChanged += s => TrackChanged?.Invoke(s);
-
-            notifiers.Add(ttn);
-            notifiers.Add(scn);
+            RegisterNotifiers();
 
             _clientId = string.IsNullOrEmpty(_clientId)
                 ? Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_ID")
@@ -59,6 +54,23 @@ namespace LyricsFinder.SpotifyIntegrity
             auth.OpenBrowser();
         }
 
+        public async Task<Bitmap> GetImageAsync()
+        {
+            try
+            {
+                WebRequest request = WebRequest.Create(_api.GetAlbum(_api.GetPlayback().Item.Album.Id).Images.First().Url);
+                WebResponse response = await request.GetResponseAsync();
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    return new Bitmap(responseStream);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         private async void Auth_AuthReceived(object sender, AuthorizationCode payload)
         {
             AuthorizationCodeAuth auth = (AuthorizationCodeAuth)sender;
@@ -88,8 +100,18 @@ namespace LyricsFinder.SpotifyIntegrity
             Parallel.ForEach(notifiers, n => { n.Refresh(playback); });
         }
 
+        private void RegisterNotifiers()
+        {
+            TrackTimeNotifier ttn = new TrackTimeNotifier(_api);
+            ttn.TrackTimeChanged += t => TrackTimeChanged?.Invoke(t);
 
-        //public event Action<bool> PlaybackStateChanged;
+            SongChangedNotifier scn = new SongChangedNotifier(_api);
+            scn.TrackChanged += s => TrackChanged?.Invoke(s);
+
+            notifiers.Add(ttn);
+            notifiers.Add(scn);
+        }
+
         public event Action<TrackTimeInfo> TrackTimeChanged;
         public event Action<TrackInfo> TrackChanged;
 
